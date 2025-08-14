@@ -21,6 +21,8 @@ const profileFormSchema = z.object({
   nationalIdPhoto: z.any().optional(),
   payslip: z.any().optional(),
   proofOfResidence: z.any().optional(),
+  titleDeeds: z.any().optional(),
+  vehicleRegistration: z.any().optional(),
 })
 
 // Mock user data - in a real app, this would be fetched
@@ -118,23 +120,40 @@ export default function ProfilePage() {
               <CardDescription>This information helps us verify your identity and financial status.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-               <div className="space-y-3">
-                    <Label>Employment Type</Label>
-                    <RadioGroup
-                        defaultValue={userData.employmentType}
-                        className="flex flex-col space-y-1"
-                        disabled
-                    >
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                            <RadioGroupItem value="private" />
-                            <Label className="font-normal">Formal Employment (Private Sector)</Label>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                            <RadioGroupItem value="civil" />
-                            <Label className="font-normal">Civil Servant (Public Sector)</Label>
-                        </FormItem>
-                    </RadioGroup>
-                </div>
+                <FormField
+                  control={form.control}
+                  name="employmentType"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Employment Type</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          className="flex flex-col space-y-1"
+                        >
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="private" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Formal Employment (Private Sector)
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="civil" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Civil Servant (Public Sector)
+                            </FormLabel>
+                          </FormItem>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               
                 <FormField
                     control={form.control}
@@ -160,15 +179,24 @@ export default function ProfilePage() {
                     </FormItem>
                 )} />
 
-              {userData.employmentType === 'civil' && (
-                <div className="space-y-1">
-                    <Label>EC Number</Label>
-                    <Input value={userData.ecNumber} disabled />
-                    <FormDescription>This is your civil servant EC number.</FormDescription>
-                </div>
+              {employmentType === 'civil' && (
+                <FormField
+                  control={form.control}
+                  name="ecNumber"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>EC Number</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your EC Number" {...field} defaultValue={userData.ecNumber} />
+                      </FormControl>
+                       <FormDescription>This is your civil servant EC number.</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               )}
 
-              {userData.employmentType === 'private' && (
+              {employmentType === 'private' && (
                    <FormField control={form.control} name="payslip" render={({ field }) => (
                       <FormItem>
                         <FormLabel>Upload Latest Payslip</FormLabel>
@@ -182,6 +210,37 @@ export default function ProfilePage() {
             </CardContent>
           </Card>
           
+           <Card>
+                <CardHeader>
+                    <CardTitle>Collaterals</CardTitle>
+                    <CardDescription>If you have any collaterals, please upload the necessary documents below. This is optional.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                     <FormField
+                        control={form.control}
+                        name="titleDeeds"
+                        render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Title Deeds</FormLabel>
+                            <FormDescription>Upload a clear copy of the property title deeds.</FormDescription>
+                            <FormControl><FileUploadButton field={field} /></FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                     <FormField
+                        control={form.control}
+                        name="vehicleRegistration"
+                        render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Vehicle Registration Book</FormLabel>
+                            <FormDescription>Upload a copy of the vehicle's registration book.</FormDescription>
+                            <FormControl><FileUploadButton field={field} /></FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )} />
+                </CardContent>
+            </Card>
+
           <div className="flex justify-end">
             <Button type="submit">Submit for Verification</Button>
           </div>
