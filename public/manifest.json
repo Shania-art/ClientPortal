@@ -1,0 +1,22 @@
+{
+  "theme_color": "#F0F4F8",
+  "background_color": "#F0F4F8",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "ALPHA CLIENT PORTAL",
+  "short_name": "ALPHA PORTAL",
+  "description": "Manage your loan applications with ease.",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
