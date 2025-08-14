@@ -3,9 +3,13 @@
   "short_name": "ALPHA PORTAL",
   "description": "Manage your loan applications with ease.",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
   "background_color": "#F0F4F8",
   "theme_color": "#F0F4F8",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "icons": [
     {
       "src": "/icon-192x192.png",
