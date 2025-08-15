@@ -28,6 +28,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="apple-touch-icon" href="/icon-192x192.png"></link>
+        <link rel="icon" href="/icon-192x192.png" sizes="192x192" />
       </head>
       <body className="font-body antialiased">
         <CartProvider>
