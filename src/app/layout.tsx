@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: 'ALPHA CLIENT PORTAL',
   description: 'Manage your loan applications with ease.',
   manifest: '/manifest.webmanifest',
+  openGraph: {
+    title: 'ALPHA CLIENT PORTAL',
+    description: 'Manage your loan applications with ease.',
+    images: [
+      {
+        url: '/alpha.png',
+        width: 200,
+        height: 165,
+        alt: 'ALPHA CLIENT PORTAL Logo',
+      },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
