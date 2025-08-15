@@ -1,12 +1,12 @@
 {
-  "theme_color": "#F0F4F8",
+  "theme_color": "#4A8FE7",
   "background_color": "#F0F4F8",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "id": "/",
   "name": "ALPHA CLIENT PORTAL",
-  "short_name": "AlphaPortal",
+  "short_name": "ALPHA PORTAL",
   "description": "Manage your loan applications with ease.",
   "lang": "en-US",
   "display_override": [
@@ -17,27 +17,28 @@
   },
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/logo.png",
+      "sizes": "215x154",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/alpha.png",
+      "sizes": "200x165",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://placehold.co/192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "https://placehold.co/512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "New Application",
-      "url": "/companies",
-      "description": "Start a new loan application"
-    },
-    {
-      "name": "My Applications",
-      "url": "/applications",
-      "description": "View your application history"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
